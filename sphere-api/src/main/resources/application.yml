@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: sphere-api
+  profiles:
+    active: dev
+
+swagger:
+  exclude-path: /error

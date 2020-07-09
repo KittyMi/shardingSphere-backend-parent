@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sphere</groupId>
+    <artifactId>sharding-sphere-backend-parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>sharding-sphere-backend-parent</name>
+    <description>sphere接口</description>
+
+    <!--    顶层pom统一管理-->
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <skipTests>true</skipTests>
+        <!--  spring -->
+        <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
+
+        <!-- mybatis -->
+        <mybatis.version>2.0.1</mybatis.version>
+        <druid.version>1.1.16</druid.version>
+        <mybatis-plus.version>3.2.0</mybatis-plus.version>
+        <jackson-databind.version>2.9.0</jackson-databind.version>
+        <!-- util -->
+        <fastjson.version>1.2.58</fastjson.version>
+        <orika-core.version>1.5.4</orika-core.version>
+        <swagger-starter.version>1.9.0.RELEASE</swagger-starter.version>
+        <swagger-butler-core.version>2.0.0</swagger-butler-core.version>
+        <okhttp.version>3.10.0</okhttp.version>
+
+        <shardingsphere.version>4.0.0-RC1</shardingsphere.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.21</version>
+        </dependency>
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.sphere</groupId>
+                <artifactId>sphere-mybatis</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sphere</groupId>
+                <artifactId>sphere-core</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <modules>
+        <module>sphere-mybatis</module>
+        <module>sphere-core</module>
+        <module>sphere-api</module>
+        <module>sphere-code-generator</module>
+    </modules>
+
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <!--                配置后idea不会reset为jdk1.5-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <configuration>
+                        <finalName>${project.artifactId}</finalName>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!--                war maven-->
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-war-plugin</artifactId>-->
+<!--                    <version>3.2.0</version>-->
+<!--                </plugin>-->
+
+                <!--                nexus deploy, include jar, source jar, javadoc jar-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                    <executions>
+                        <execution>
+                            <id>default-deploy</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>deploy</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+
+</project>

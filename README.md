@@ -13,4 +13,4 @@ spring-boot + shardingsphere + mybatis-plus + redis +mysql
 -- API接口模块
 <module>sphere-api</module>
 ```
-[shardingsphere + mybatis-plus 分表分库代码集成](https://www.686blog.com/sxdcgaq8080/p/7894828.html)
+[shardingsphere + mybatis-plus 分表分库代码集成](https://www.686blog.com)
