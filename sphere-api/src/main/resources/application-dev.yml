@@ -10,7 +10,7 @@ redis:
   database: 0
  # password: redis123$%^
 server:
-  port: 8710
+  port: 8711
 spring:
   main:
     allow-bean-definition-overriding: true

@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
                 "com.sphere.core"
         }
 )
-//@EnableSwagger2Doc
+@EnableSwagger2Doc
 public class SphereApplication {
         public static void main(String[] args) {
                 SpringApplication.run(SphereApplication.class);

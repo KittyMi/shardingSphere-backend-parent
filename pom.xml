@@ -31,7 +31,7 @@
         <swagger-butler-core.version>2.0.0</swagger-butler-core.version>
         <okhttp.version>3.10.0</okhttp.version>
 
-        <shardingsphere.version>4.0.0-RC1</shardingsphere.version>
+        <shardingsphere.version>4.1.1</shardingsphere.version>
     </properties>
 
     <dependencies>
@@ -72,6 +72,14 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+
+            <!-- 指定guava版本为20.0 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>20.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

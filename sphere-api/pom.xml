@@ -17,6 +17,7 @@
             <groupId>com.sphere</groupId>
             <artifactId>sphere-core</artifactId>
             <version>1.0.0</version>
+
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -30,7 +31,13 @@
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
             <version>${shardingsphere.version}</version>
-
+            <!-- 引入依赖的但排除一下guava依赖 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- for spring namespace -->
