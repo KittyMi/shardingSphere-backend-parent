@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.api.R;
 import com.sphere.mybatis.entity.Order;
 import com.sphere.web.dto.OrderDTO;
 import com.sphere.web.service.OrderService;
+import lombok.AllArgsConstructor;
 import ma.glasnost.orika.MapperFacade;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +18,10 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/api/order")
+@AllArgsConstructor
 public class OrderController extends ApiController {
-    @Resource
     OrderService service;
-    @Resource
     MapperFacade mapperFacade;
-
     @PostMapping
     public R save(@RequestBody OrderDTO dto){
         return success(service.save(mapperFacade.map(dto, Order.class)));
